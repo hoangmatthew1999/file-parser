@@ -62,7 +62,7 @@
       </div-->
       <div class = "form-group">
         <label for = "Email"> Email: </label>
-        <input name = "email" type = "text">
+        <input name = "email" type = "text" id = "email" >
       </div>
           <p><button type = "submit" name= "login-submit">Submit</button></p>
    </form>
@@ -81,8 +81,35 @@
     $username = $_POST["username"];
     //$password = $_POST["password"]; //Commented out password just in case
     $pin = $_POST["pin"];
+    $pinValidation = is_nan($pin);
+    if($pinValidation == 0){
+      echo $pin;
+      die("pin is not a number");
+    }
+    else{
+      echo "number";
+      echo $pin;
+
+    }
+    echo "pin validation step has been passed with a valid number";
+
     $email = $_POST["email"];
+    $emailValidation = explode ('@', $email);
+    if( count($emailValidation) != 2){
+      die("invalid email");
+      echo "hello ";
+    }
+    else{
+      echo $emailValidation;
+      echo "valid email";
+    }
+
+
+
+
+    
     //$acctnum = rand(100000,199999);
+    
 
 
     //Create connection
@@ -134,3 +161,5 @@
     ?>
   </body>
 </html>
+
+
